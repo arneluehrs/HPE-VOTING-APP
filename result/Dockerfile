@@ -2,6 +2,9 @@ FROM node:5.11.0-slim
 
 WORKDIR /app
 
+RUN npm config set strict-ssl false
+RUN npm config set proxy http://web-proxy.corp.hpecorp.net:8080
+RUN npm config set https_proxy http://web-proxy.corp.hpecorp.net:8080
 RUN npm install -g nodemon
 ADD package.json /app/package.json
 RUN npm config set registry http://registry.npmjs.org
